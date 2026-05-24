@@ -109,16 +109,17 @@ body{
 .brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;cursor:none}
 .brand-mark{
   width:46px;height:46px;border-radius:50%;
-  background:linear-gradient(135deg,var(--pool) 0%,var(--pool-d) 50%,var(--garten) 100%);
+  background:#fff;
   display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
   transition:transform .4s var(--ease);
+  box-shadow:0 2px 8px rgba(10,20,22,.06);
+  border:1px solid var(--line);
 }
-.brand:hover .brand-mark{transform:rotate(-12deg) scale(1.05)}
-.brand-mark::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.4),transparent 50%);
-}
-.brand-mark svg{width:26px;height:26px;position:relative;z-index:1}
+.nav.dark-mode .brand-mark{background:rgba(255,255,255,.95);border-color:rgba(255,255,255,.2)}
+.brand:hover .brand-mark{transform:rotate(-8deg) scale(1.05)}
+.brand-mark svg{width:34px;height:34px;position:relative;z-index:1}
+.foot-brand .brand-mark{width:56px;height:56px}
+.foot-brand .brand-mark svg{width:42px;height:42px}
 .brand-text{display:flex;flex-direction:column;line-height:1.05}
 .brand-name{font-weight:800;font-size:19px;letter-spacing:-.03em;color:var(--ink)}
 .nav.dark-mode .brand-name{color:#fff}
@@ -1395,8 +1396,10 @@ section{position:relative}
 .direct-inner{max-width:1280px;margin:0 auto;padding:0 32px}
 .direct-num{position:relative}
 .direct-head{margin-bottom:48px;max-width:760px;position:relative}
-.direct-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:40px}
-@media(max-width:880px){.direct-grid{grid-template-columns:1fr}}
+.direct-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px}
+@media(max-width:1100px){.direct-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.direct-grid{grid-template-columns:1fr}}
+.direct-tag-alt{background:rgba(56,100,54,.15);color:var(--garten,#386436)}
 .direct-card{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:32px 28px;text-decoration:none;color:inherit;transition:all .35s var(--ease);overflow:hidden}
 .direct-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--pool);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
 .direct-card:hover{border-color:var(--pool);transform:translateY(-4px);box-shadow:0 16px 40px -20px rgba(74,150,164,.2)}
@@ -1630,10 +1633,19 @@ section[id]{scroll-margin-top:80px}
   <div class="nav-inner">
     <a href="#top" class="brand">
       <div class="brand-mark">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M4 17C8 14 11 17 12 17C13 17 16 14 20 17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M8 11L10 7L12 11" fill="white"/>
-          <path d="M12 12L14 6L16 12" fill="white"/>
+        <svg viewBox="0 50 1327 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Pool-Welle (unten, Türkis) -->
+          <path fill="#6db4c1" d="m31.51 654.37q35.13-0.84 70.26-0.09c0.61 57.09 11.16 107.84 28.22 161.96 4.28 12.16 8.97 26.41 14.39 37.96 5.12 14.66 18.28 39.19 26.11 52.87l7.65 13.1c7.37 11.78 15.18 24.78 23.07 36.06 1.35 2.09 3.26 5.39 4.92 7.02 7.17 12.28 42.05 54.81 52.99 62.95 45.47-20.56 67.91-26.51 116.14-37.22l2.23-0.39c46.59-7.08 87.68-9.98 134.57-4.98l7.79 0.9c15.84 2.76 31.6 5.08 47.33 8.44 43.04 9.17 83.77 24.96 125.24 39.27 15.23 5.25 31.99 7.71 46.81 12.82l1.75 0.14c68.29 13.86 126.81 16.45 195.09 1.88q8.1-2.05 16.19-4.18c45.13-11.61 88.78-26.58 129.56-49.67 12.12-6.87 18.07-13.23 26.73-23.92q3.17-4.32 6.54-8.49c14.55-22.12 26.85-41.03 39.22-64.46 14.88-27.02 24.1-51.28 33.67-80.21 11.55-37.05 22.74-73.46 25.35-112.48 2.7-9.77 3.36-37.98 3.61-49.26 22.69-0.98 46.27 0.23 69.32-0.63-4.59 73.08-11.67 123.63-36.48 192.99-13.74 36.19-24.35 60.62-42.68 95.22-79.86 144.35-213.39 251.41-371.65 297.97-62.43 18.38-127.34 27-192.41 25.53-14.33-0.74-28.66-1.36-42.94-2.7l-1.92-0.19c-137.33-14.08-266.37-72.42-367.65-166.23-25.14-23.47-42.07-43.09-63.64-69.52-21.87-28.17-38.95-55.13-57.22-85.7-34.47-62.02-59.59-138.62-70.61-208.55-3.9-24.74-5.34-53.04-7.55-78.21zm346.98 367.87c-16.05 2.51-87.22 15.6-95.21 26.27 1.13 1.56 0.47 1.16 1.61 1.63 7.05 8.08 27.86 24.19 36.96 31.22 53.52 41.25 140.93 87.81 208.44 99.27 6.16 2.55 23.28 5.61 30.21 6.96 52.14 10.17 140.04 12.91 191.73 1.37 58.8-9.23 137.58-38.3 187.74-69.55 18.17-10.49 63.86-37.92 76.73-54.21 5.27-2.41 11.97-10.73 15.85-15.26l-19.4 6.79-3.05 0.82c-19.2 5.75-38.25 12.44-57.53 17.86-53.1 14.91-123.75 20.14-178.48 10.78-33.44-1.46-100.44-22.73-132.1-34.12-94.81-34.1-163.79-41.26-263.5-29.83z"/>
+          <!-- Baum rechts (großer, Grün) -->
+          <path fill="#386436" d="m741.81 116.62c5.64-17.79 11.32-35.45 16.06-53.51 0.4-1.5 1.68-2.39 2.82-3.24 1.82 6.58 3.31 13.63 4.83 20.31 7.57 31.19 14.99 50.07 24.19 79.63l34.52 114.6 107.49 353.09 39.35 129.35c4.35 14.19 16.57 49.02 18.68 61.98 2.17 5.35 5.52 11.34 3.71 16.61-7.55 0.9-20.4 0.35-28.38 0.31l-45.52 0.06-164.95 0.06-7.78-21.09c-1.43-5.27-5.83-16.4-7.83-22.31l-18.61-55.5c-14.55-43.71-27.63-87.43-42.56-131.23l-28.04-82.78c-5.83-17.21-12.73-36.08-17.58-53.32 8.42-23.06 16.58-53.41 23.93-77.43l38.8-125.87c14.82-49.79 32.6-99.32 46.87-149.72z"/>
+          <!-- Schatten Baum -->
+          <path fill="#30502d" d="m746.83 814.78c6.77 2.53 7.12 6.13 10.29 13.03q0.5 1.08 0.96 2.17c69.15 2.3 138.93 0.32 208.13 0.84 7.41 0.05 15.21 0.05 22.56-0.79 1.59-2.56 0.87-7.35 0.98-11.2 2.17 5.35 5.52 11.34 3.71 16.61-7.55 0.9-20.4 0.35-28.38 0.31l-45.52 0.06-164.95 0.06z"/>
+          <!-- Baum links (großer, Grün) -->
+          <path fill="#386436" d="m522.34 232.53c3.59 2.25 30.45 85.57 34.65 97.73q60.05 175.3 116.8 351.68l32.89 98.54c5.19 15.37 11.41 32.55 15.72 48.29 0.66 2.39-0.81 4.81-2.34 6.62-6.66 1.3-48.95 0.6-57.74 0.57l-135.07-0.44q-101.97 0.74-203.95 0.08c1.08-5.36 2.91-10.5 4.51-15.71 11.21-36.33 23.8-72.19 35.65-108.31q43.95-137.03 90.19-273.31l41.58-127.65c5-15.65 20.6-66.28 27.11-78.09z"/>
+          <!-- Kreis-Landschaft links (Grau) -->
+          <path fill="#a8a5a3" d="m627.14 12.46c38.83-1.19 79.84-0.64 118.1 6.75-7.51 19.97-13.98 46.13-22.64 64.89-39.7-2.26-62.94-4.21-104.1-1.59-107.62 7.51-210.59 46.79-295.86 112.87-119.97 92.13-198.21 228.33-217.37 378.38-2.3 18.04-3.53 32.56-3.51 50.72q-34.65-0.21-69.3 0.15c0.8-140.62 60.29-288.02 151.61-394.32 85.02-97.88 197.77-167.6 323.31-199.93 40.85-10.13 78.09-14.79 119.76-17.92z"/>
+          <!-- Kreis-Landschaft rechts (Grau) -->
+          <path fill="#a8a5a3" d="m776.3 24.53c8.16 0.1 40.89 8.51 49.71 10.74 95.22 24.03 186.41 78.35 258.86 144.42 77.69 70.86 139.21 169.48 171.34 269.64 18.55 57.78 26.83 114.37 29.73 174.71-10.88 1.36-55.13 0.4-68.37 0.38-3.61-90.72-28.68-179.29-73.16-258.45-63.39-111.91-162.95-198.94-282.32-246.83-20.79-8.2-42.8-14.49-64.34-20.38-1.98-5.08-3.52-10.62-4.86-15.9-4.97-19.55-11.58-38.84-16.59-58.33z"/>
         </svg>
       </div>
       <div class="brand-text">
@@ -1880,7 +1892,7 @@ section[id]{scroll-margin-top:80px}
       <div class="pcard reveal">
         <div class="pcard-num">03</div>
         <h3 class="pcard-h"><strong>Eine</strong> Baustelle. <strong>Ein</strong> Verantwortlicher.</h3>
-        <p class="pcard-p">Kein Subunternehmer. Kein "der andere ist schuld". Inhaber Domenik Jelić ist Ihr persönlicher Bauleiter — von der Erstvermessung bis zur Schlüsselübergabe. Eine Telefonnummer. Eine Verantwortung. Vierzehn eigene Mitarbeiter.</p>
+        <p class="pcard-p">Kein Subunternehmer. Kein "der andere ist schuld". Inhaber Zdenko Jelić und Pool-Bauleiter Domenik Jelić — von der Erstvermessung bis zur Schlüsselübergabe. Eine Telefonnummer. Eine Verantwortung. Vierzehn eigene Mitarbeiter.</p>
         <div class="pcard-spec"><span>Inhabergeführte Bauleitung</span><strong>0 Subunternehmer</strong></div>
       </div>
     </div>
@@ -2295,7 +2307,7 @@ section[id]{scroll-margin-top:80px}
       <div class="subst-quote">
         <svg viewBox="0 0 32 32" fill="currentColor"><path d="M10 8H4v8h4c0 4-2 6-4 6v2c5 0 8-3 8-8V8zm12 0h-6v8h4c0 4-2 6-4 6v2c5 0 8-3 8-8V8h-2z"/></svg>
         <p>Ein guter Garten verbindet Mensch und Natur. Ein guter Pool ist Teil dieses Gartens — kein Fremdkörper darin.</p>
-        <div class="subst-who"><strong>Domenik Jelić</strong> · Inhaber & Pool-Bauleitung</div>
+        <div class="subst-who"><strong>Zdenko Jelić</strong> · Inhaber & Geschäftsführer</div>
       </div>
     </div>
   </div>
@@ -2463,8 +2475,8 @@ section[id]{scroll-margin-top:80px}
     <div class="direct-head reveal">
       <div class="section-num direct-num">07 / 07</div>
       <div class="eb">Kein Konfigurator-Typ?</div>
-      <h2 class="h2">Lieber direkt mit <span class="em">Domenik sprechen</span>?</h2>
-      <p class="sub">Manche Projekte sind so individuell, dass kein Konfigurator sie abbildet. Rufen Sie an, schreiben Sie auf WhatsApp oder per E-Mail — Domenik meldet sich persönlich.</p>
+      <h2 class="h2">Lieber direkt <span class="em">Kontakt aufnehmen</span>?</h2>
+      <p class="sub">Manche Projekte sind so individuell, dass kein Konfigurator sie abbildet. Rufen Sie an, schreiben Sie auf WhatsApp oder per E-Mail — wir melden uns persönlich. Wer direkt mit Domenik (Pool-Bauleitung) sprechen möchte, findet seine persönliche E-Mail-Adresse zusätzlich unten.</p>
     </div>
 
     <div class="direct-grid reveal">
@@ -2472,31 +2484,42 @@ section[id]{scroll-margin-top:80px}
         <div class="direct-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </div>
-        <div class="direct-eb">Telefon</div>
+        <div class="direct-eb">Telefon · Büro</div>
         <div class="direct-val">0711 · 76 67 56</div>
         <div class="direct-meta">Mo–Fr 08:00–18:00 · Sa 10:00–14:00</div>
         <div class="direct-cta">Jetzt anrufen <span>→</span></div>
       </a>
 
-      <a class="direct-card direct-card-prio" href="https://wa.me/4915259982000?text=Hallo%20Domenik%2C%20ich%20interessiere%20mich%20f%C3%BCr%20einen%20Pool">
+      <a class="direct-card direct-card-prio" href="https://wa.me/4915259982000?text=Hallo%20Jelić%20Galabau%2C%20ich%20interessiere%20mich%20f%C3%BCr%20einen%20Pool">
         <div class="direct-tag">★ Schnellste Antwort</div>
         <div class="direct-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21M9 10a.5.5 0 1 0 1 0V9a.5.5 0 1 0-1 0v1zm5 0a.5.5 0 1 0 1 0V9a.5.5 0 1 0-1 0v1zm-5 4c.5 1.5 2 2 3 2s2.5-.5 3-2"/></svg>
         </div>
         <div class="direct-eb">WhatsApp</div>
-        <div class="direct-val">Direkt an Domenik</div>
+        <div class="direct-val">0152 · 59 98 20 00</div>
         <div class="direct-meta">Antwort meist binnen 2 Stunden</div>
         <div class="direct-cta">WhatsApp öffnen <span>→</span></div>
       </a>
 
-      <a class="direct-card" href="mailto:d.jelic@jelicgalabau.de?subject=Pool-Anfrage%20%C3%BCber%20jelicgalabau.de">
+      <a class="direct-card" href="mailto:info@jelicgalabau.de?subject=Anfrage%20%C3%BCber%20jelicgalabau.de">
         <div class="direct-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
         </div>
-        <div class="direct-eb">E-Mail</div>
-        <div class="direct-val">d.jelic@jelicgalabau.de</div>
-        <div class="direct-meta">Direkt an Domenik · Antwort binnen 24h</div>
+        <div class="direct-eb">E-Mail · Allgemein</div>
+        <div class="direct-val">info@jelicgalabau.de</div>
+        <div class="direct-meta">Allgemeine Anfragen · Antwort binnen 24h</div>
         <div class="direct-cta">E-Mail schreiben <span>→</span></div>
+      </a>
+
+      <a class="direct-card" href="mailto:d.jelic@jelicgalabau.de?subject=Pool-Anfrage%20direkt%20an%20Domenik%20-%20%C3%BCber%20jelicgalabau.de">
+        <div class="direct-tag direct-tag-alt">Pool-Bauleitung</div>
+        <div class="direct-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 7h-7l-2-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
+        </div>
+        <div class="direct-eb">Direkt an Domenik</div>
+        <div class="direct-val">d.jelic@jelicgalabau.de</div>
+        <div class="direct-meta">Pool-Projekte · persönlich</div>
+        <div class="direct-cta">An Domenik schreiben <span>→</span></div>
       </a>
     </div>
 
@@ -2679,7 +2702,7 @@ section[id]{scroll-margin-top:80px}
               </div>
               <div class="termin-success-row">
                 <div class="termin-success-row-k">BERATER</div>
-                <div class="termin-success-row-v">Domenik Jelić</div>
+                <div class="termin-success-row-v">Domenik Jelić · Pool-Bauleitung</div>
               </div>
             </div>
 
@@ -2703,10 +2726,13 @@ section[id]{scroll-margin-top:80px}
       <div>
         <div class="foot-brand">
           <div class="brand-mark">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path d="M4 17C8 14 11 17 12 17C13 17 16 14 20 17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M8 11L10 7L12 11" fill="white"/>
-              <path d="M12 12L14 6L16 12" fill="white"/>
+            <svg viewBox="0 50 1327 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#6db4c1" d="m31.51 654.37q35.13-0.84 70.26-0.09c0.61 57.09 11.16 107.84 28.22 161.96 4.28 12.16 8.97 26.41 14.39 37.96 5.12 14.66 18.28 39.19 26.11 52.87l7.65 13.1c7.37 11.78 15.18 24.78 23.07 36.06 1.35 2.09 3.26 5.39 4.92 7.02 7.17 12.28 42.05 54.81 52.99 62.95 45.47-20.56 67.91-26.51 116.14-37.22l2.23-0.39c46.59-7.08 87.68-9.98 134.57-4.98l7.79 0.9c15.84 2.76 31.6 5.08 47.33 8.44 43.04 9.17 83.77 24.96 125.24 39.27 15.23 5.25 31.99 7.71 46.81 12.82l1.75 0.14c68.29 13.86 126.81 16.45 195.09 1.88q8.1-2.05 16.19-4.18c45.13-11.61 88.78-26.58 129.56-49.67 12.12-6.87 18.07-13.23 26.73-23.92q3.17-4.32 6.54-8.49c14.55-22.12 26.85-41.03 39.22-64.46 14.88-27.02 24.1-51.28 33.67-80.21 11.55-37.05 22.74-73.46 25.35-112.48 2.7-9.77 3.36-37.98 3.61-49.26 22.69-0.98 46.27 0.23 69.32-0.63-4.59 73.08-11.67 123.63-36.48 192.99-13.74 36.19-24.35 60.62-42.68 95.22-79.86 144.35-213.39 251.41-371.65 297.97-62.43 18.38-127.34 27-192.41 25.53-14.33-0.74-28.66-1.36-42.94-2.7l-1.92-0.19c-137.33-14.08-266.37-72.42-367.65-166.23-25.14-23.47-42.07-43.09-63.64-69.52-21.87-28.17-38.95-55.13-57.22-85.7-34.47-62.02-59.59-138.62-70.61-208.55-3.9-24.74-5.34-53.04-7.55-78.21zm346.98 367.87c-16.05 2.51-87.22 15.6-95.21 26.27 1.13 1.56 0.47 1.16 1.61 1.63 7.05 8.08 27.86 24.19 36.96 31.22 53.52 41.25 140.93 87.81 208.44 99.27 6.16 2.55 23.28 5.61 30.21 6.96 52.14 10.17 140.04 12.91 191.73 1.37 58.8-9.23 137.58-38.3 187.74-69.55 18.17-10.49 63.86-37.92 76.73-54.21 5.27-2.41 11.97-10.73 15.85-15.26l-19.4 6.79-3.05 0.82c-19.2 5.75-38.25 12.44-57.53 17.86-53.1 14.91-123.75 20.14-178.48 10.78-33.44-1.46-100.44-22.73-132.1-34.12-94.81-34.1-163.79-41.26-263.5-29.83z"/>
+              <path fill="#386436" d="m741.81 116.62c5.64-17.79 11.32-35.45 16.06-53.51 0.4-1.5 1.68-2.39 2.82-3.24 1.82 6.58 3.31 13.63 4.83 20.31 7.57 31.19 14.99 50.07 24.19 79.63l34.52 114.6 107.49 353.09 39.35 129.35c4.35 14.19 16.57 49.02 18.68 61.98 2.17 5.35 5.52 11.34 3.71 16.61-7.55 0.9-20.4 0.35-28.38 0.31l-45.52 0.06-164.95 0.06-7.78-21.09c-1.43-5.27-5.83-16.4-7.83-22.31l-18.61-55.5c-14.55-43.71-27.63-87.43-42.56-131.23l-28.04-82.78c-5.83-17.21-12.73-36.08-17.58-53.32 8.42-23.06 16.58-53.41 23.93-77.43l38.8-125.87c14.82-49.79 32.6-99.32 46.87-149.72z"/>
+              <path fill="#30502d" d="m746.83 814.78c6.77 2.53 7.12 6.13 10.29 13.03q0.5 1.08 0.96 2.17c69.15 2.3 138.93 0.32 208.13 0.84 7.41 0.05 15.21 0.05 22.56-0.79 1.59-2.56 0.87-7.35 0.98-11.2 2.17 5.35 5.52 11.34 3.71 16.61-7.55 0.9-20.4 0.35-28.38 0.31l-45.52 0.06-164.95 0.06z"/>
+              <path fill="#386436" d="m522.34 232.53c3.59 2.25 30.45 85.57 34.65 97.73q60.05 175.3 116.8 351.68l32.89 98.54c5.19 15.37 11.41 32.55 15.72 48.29 0.66 2.39-0.81 4.81-2.34 6.62-6.66 1.3-48.95 0.6-57.74 0.57l-135.07-0.44q-101.97 0.74-203.95 0.08c1.08-5.36 2.91-10.5 4.51-15.71 11.21-36.33 23.8-72.19 35.65-108.31q43.95-137.03 90.19-273.31l41.58-127.65c5-15.65 20.6-66.28 27.11-78.09z"/>
+              <path fill="#a8a5a3" d="m627.14 12.46c38.83-1.19 79.84-0.64 118.1 6.75-7.51 19.97-13.98 46.13-22.64 64.89-39.7-2.26-62.94-4.21-104.1-1.59-107.62 7.51-210.59 46.79-295.86 112.87-119.97 92.13-198.21 228.33-217.37 378.38-2.3 18.04-3.53 32.56-3.51 50.72q-34.65-0.21-69.3 0.15c0.8-140.62 60.29-288.02 151.61-394.32 85.02-97.88 197.77-167.6 323.31-199.93 40.85-10.13 78.09-14.79 119.76-17.92z"/>
+              <path fill="#a8a5a3" d="m776.3 24.53c8.16 0.1 40.89 8.51 49.71 10.74 95.22 24.03 186.41 78.35 258.86 144.42 77.69 70.86 139.21 169.48 171.34 269.64 18.55 57.78 26.83 114.37 29.73 174.71-10.88 1.36-55.13 0.4-68.37 0.38-3.61-90.72-28.68-179.29-73.16-258.45-63.39-111.91-162.95-198.94-282.32-246.83-20.79-8.2-42.8-14.49-64.34-20.38-1.98-5.08-3.52-10.62-4.86-15.9-4.97-19.55-11.58-38.84-16.59-58.33z"/>
             </svg>
           </div>
           <div class="brand-text">
@@ -2745,7 +2771,8 @@ section[id]{scroll-margin-top:80px}
           <li>70597 Stuttgart</li>
           <li style="margin-top:14px"><a href="tel:+4971176675600">0711 · 76 67 56</a></li>
           <li><a href="tel:+4915259982000">0152 · 59 98 20 00</a></li>
-          <li><a href="mailto:d.jelic@jelicgalabau.de">d.jelic@jelicgalabau.de</a></li>
+          <li style="margin-top:8px"><a href="mailto:info@jelicgalabau.de">info@jelicgalabau.de</a></li>
+          <li><a href="mailto:d.jelic@jelicgalabau.de">d.jelic@jelicgalabau.de</a> <span style="opacity:.5;font-size:11px">· Pool-Bauleitung</span></li>
         </ul>
       </div>
     </div>
@@ -2886,7 +2913,7 @@ const KFG_CONFIG = {
   // Dual-Versand: Formspree leitet automatisch an alle in "Notification recipients" konfigurierten Mails
   formEndpoint: 'https://formspree.io/f/REPLACE_WITH_FORM_ID',
   // Backup: mailto-Fallback wenn Endpoint nicht erreichbar
-  fallbackMailTo: 'd.jelic@jelicgalabau.de,ben@vantor-marketing.com',
+  fallbackMailTo: 'info@jelicgalabau.de,d.jelic@jelicgalabau.de,ben@vantor-marketing.com',
   // Tracking IDs — austauschen mit echten IDs
   gtagConversionId: 'AW-XXXXXX/XXXX',
   fbPixelId: 'XXXXXXXXXX'
@@ -4002,7 +4029,8 @@ Jelić Galabau · Stuttgart
 ──────────────────────────────────────────────
 Direkt:      0152 59 98 20 00 (Mobil · WhatsApp)
 Büro:        0711 76 67 56
-Mail:        d.jelic@jelicgalabau.de
+Mail:        d.jelic@jelicgalabau.de (direkt)
+Mail:        info@jelicgalabau.de (allgemein)
 Adresse:     Böhmstraße 6 · 70597 Stuttgart
 ──────────────────────────────────────────────
 
@@ -4433,7 +4461,8 @@ Jelić Galabau · Stuttgart
 ──────────────────────────────────────────────
 Direkt:      0152 59 98 20 00 (Mobil · WhatsApp)
 Büro:        0711 76 67 56
-Mail:        d.jelic@jelicgalabau.de
+Mail:        d.jelic@jelicgalabau.de (direkt)
+Mail:        info@jelicgalabau.de (allgemein)
 Adresse:     Böhmstraße 6 · 70597 Stuttgart
 ──────────────────────────────────────────────
 `.trim();
