@@ -1426,11 +1426,184 @@ section{position:relative}
   .direct{padding:80px 0 100px}
 }
 
+/* ============================================================
+   TERMIN-BUCHUNG · Standalone-Sektion im Jelić-Brand
+   ============================================================ */
+.termin{background:linear-gradient(180deg,#0C1A1E 0%,#1A2D33 50%,#0C1A1E 100%);padding:120px 0 140px;position:relative;overflow:hidden;color:#fff;scroll-margin-top:80px}
+.termin::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(109,180,193,.5),transparent)}
+.termin::after{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(109,180,193,.08) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+.termin-inner{max-width:1320px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+@media(max-width:880px){.termin-inner{padding:0 20px}}
+
+.termin-head{max-width:820px;margin-bottom:64px;text-align:center;margin-left:auto;margin-right:auto}
+.termin-eb{color:var(--pool);justify-content:center}
+.termin-eb::before{background:var(--pool)}
+.termin-h{color:#fff}
+.termin-h .em{color:var(--pool)}
+.termin-sub{color:rgba(255,255,255,.7);margin-left:auto;margin-right:auto;max-width:680px}
+
+.termin-wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:start}
+@media(max-width:1100px){.termin-wrap{grid-template-columns:1fr;gap:40px}}
+
+/* ===== Linke Seite: USPs ===== */
+.termin-info{display:flex;flex-direction:column;gap:18px;position:sticky;top:100px}
+@media(max-width:1100px){.termin-info{position:static}}
+
+.termin-info-card{background:rgba(255,255,255,.03);border:1px solid rgba(109,180,193,.15);border-radius:14px;padding:28px;transition:all .4s var(--ease)}
+.termin-info-card:hover{border-color:rgba(109,180,193,.3);background:rgba(255,255,255,.05)}
+.termin-info-icon{width:44px;height:44px;border-radius:50%;background:rgba(109,180,193,.12);color:var(--pool);display:flex;align-items:center;justify-content:center;margin-bottom:18px;border:1px solid rgba(109,180,193,.25)}
+.termin-info-icon svg{width:22px;height:22px}
+.termin-info-h{font-size:18px;font-weight:700;letter-spacing:-.015em;color:#fff;margin-bottom:14px;line-height:1.3}
+.termin-info-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
+.termin-info-list li{font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.78);padding-left:22px;position:relative}
+.termin-info-list li::before{content:'';position:absolute;left:0;top:9px;width:12px;height:1.5px;background:var(--pool)}
+.termin-info-list.termin-info-neg li::before{background:#9F5A4D}
+
+.termin-trust{display:flex;gap:14px;align-items:flex-start;padding:20px 22px;background:linear-gradient(135deg,rgba(109,180,193,.08),rgba(109,180,193,.02));border:1px solid rgba(109,180,193,.2);border-radius:12px}
+.termin-trust-icon{flex-shrink:0;width:32px;height:32px;color:var(--pool)}
+.termin-trust-icon svg{width:100%;height:100%}
+.termin-trust-text{font-size:13px;line-height:1.55;color:rgba(255,255,255,.85)}
+.termin-trust-text strong{color:#fff;font-weight:700}
+
+/* ===== Rechte Seite: Booking-Flow ===== */
+.termin-booking{background:#fff;border-radius:16px;padding:36px;box-shadow:0 40px 100px -30px rgba(0,0,0,.5);color:var(--ink);position:relative;overflow:hidden}
+@media(max-width:680px){.termin-booking{padding:24px 20px}}
+.termin-booking::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pool),var(--pool-d),var(--pool))}
+
+/* Step-Indicator */
+.termin-steps{display:flex;align-items:center;gap:8px;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.termin-step{display:flex;align-items:center;gap:10px;opacity:.4;transition:opacity .4s var(--ease)}
+.termin-step.active{opacity:1}
+.termin-step.done{opacity:1}
+.termin-step.done .termin-step-num{background:var(--pool-d);color:#fff}
+.termin-step-num{width:26px;height:26px;border-radius:50%;background:rgba(10,20,22,.08);color:var(--text-2);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;font-family:'JetBrains Mono',monospace;transition:all .4s var(--ease)}
+.termin-step.active .termin-step-num{background:var(--pool);color:#fff;box-shadow:0 0 0 4px rgba(109,180,193,.18)}
+.termin-step-lbl{font-size:13px;font-weight:600;color:var(--text);letter-spacing:-.005em}
+@media(max-width:560px){.termin-step-lbl{display:none}}
+.termin-step-line{flex:1;height:1.5px;background:var(--line);position:relative;overflow:hidden;min-width:20px}
+.termin-step-line.done{background:var(--pool-d)}
+
+/* Stages */
+.termin-stage{display:none;animation:kfgFade .5s var(--ease)}
+.termin-stage.termin-stage-active{display:block}
+
+/* === STAGE 1: Kalender === */
+.termin-cal-wrap{background:#FAFAF8;border:1px solid var(--line);border-radius:12px;padding:24px;margin-bottom:18px}
+@media(max-width:560px){.termin-cal-wrap{padding:18px}}
+
+.termin-cal{}
+.termin-cal-month-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.termin-cal-month-name{font-size:17px;font-weight:700;letter-spacing:-.015em;color:var(--ink);font-variant-numeric:tabular-nums}
+.termin-cal-nav-group{display:flex;gap:6px}
+.termin-cal-nav-btn{width:34px;height:34px;background:#fff;border:1px solid var(--line);border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s var(--ease);color:var(--text-2)}
+.termin-cal-nav-btn:hover:not(:disabled){border-color:var(--pool);color:var(--pool-d);transform:translateY(-1px)}
+.termin-cal-nav-btn:disabled{opacity:.3;cursor:not-allowed}
+.termin-cal-nav-btn svg{width:16px;height:16px}
+
+.termin-cal-wd-row{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:8px}
+.termin-cal-wd{font-size:11px;text-align:center;color:var(--text-2);font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;padding:6px 0;font-weight:600}
+
+.termin-cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.termin-cal-day-cell{aspect-ratio:1;position:relative}
+.termin-cal-day-cell.empty{pointer-events:none}
+.termin-cal-day-btn{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--text);background:#fff;border:1.5px solid transparent;border-radius:8px;cursor:pointer;transition:all .25s var(--ease);font-variant-numeric:tabular-nums;font-family:'Mulish',sans-serif}
+.termin-cal-day-btn:hover:not(:disabled){border-color:var(--pool);background:var(--pool-l);color:var(--pool-d);transform:translateY(-1px)}
+.termin-cal-day-btn.today{border-color:rgba(109,180,193,.4)}
+.termin-cal-day-btn.weekend{color:var(--text-2);opacity:.6}
+.termin-cal-day-btn:disabled{opacity:.25;cursor:not-allowed;color:var(--text-2)}
+.termin-cal-day-btn.selected{background:var(--pool);border-color:var(--pool);color:#fff;box-shadow:0 4px 14px rgba(109,180,193,.45);transform:translateY(-1px)}
+.termin-cal-day-btn .termin-cal-day-avail{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:4px;height:4px;background:var(--pool);border-radius:50%}
+.termin-cal-day-btn.selected .termin-cal-day-avail{background:#fff}
+.termin-cal-day-btn:disabled .termin-cal-day-avail{display:none}
+
+/* Slot-Bereich */
+.termin-slots{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
+.termin-slots-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px}
+.termin-slots-lbl{font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2);font-weight:600}
+.termin-slots-date{font-size:13px;font-weight:600;color:var(--ink)}
+.termin-slots-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+@media(max-width:560px){.termin-slots-grid{grid-template-columns:repeat(3,1fr)}}
+.termin-slot-btn{padding:11px 8px;font-size:13px;font-weight:600;text-align:center;background:#fff;border:1.5px solid var(--line);border-radius:8px;cursor:pointer;transition:all .25s var(--ease);color:var(--text);font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums}
+.termin-slot-btn:hover:not(:disabled){border-color:var(--pool);background:var(--pool-l);color:var(--pool-d);transform:translateY(-1px)}
+.termin-slot-btn:disabled{opacity:.3;cursor:not-allowed}
+.termin-slot-btn.selected{background:var(--pool);border-color:var(--pool);color:#fff;box-shadow:0 4px 14px rgba(109,180,193,.45)}
+
+/* Slot-Info-Hint (vor Auswahl) */
+.termin-slot-info{display:flex;gap:14px;align-items:center;padding:18px 22px;background:linear-gradient(135deg,var(--pool-l),#fff);border:1px solid rgba(109,180,193,.2);border-radius:12px;margin-bottom:24px}
+.termin-slot-info.hidden{display:none}
+.termin-slot-info-icon{width:36px;height:36px;border-radius:50%;background:var(--pool);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.termin-slot-info-icon svg{width:18px;height:18px}
+.termin-slot-info-text{font-size:13px;line-height:1.5;color:var(--text)}
+.termin-slot-info-text strong{color:var(--ink);font-weight:700}
+
+/* === STAGE 2: Form === */
+.termin-selected-slot{display:flex;align-items:center;gap:14px;padding:18px 22px;background:linear-gradient(135deg,var(--pool-l),#fff);border:1px solid rgba(109,180,193,.25);border-radius:12px;margin-bottom:28px}
+.termin-selected-icon{width:40px;height:40px;border-radius:50%;background:var(--pool);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.termin-selected-icon svg{width:18px;height:18px}
+.termin-selected-content{flex:1;min-width:0}
+.termin-selected-lbl{font-size:10.5px;font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--text-2);margin-bottom:3px}
+.termin-selected-val{font-size:15px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.005em}
+.termin-selected-edit{padding:7px 14px;font-size:12px;font-weight:600;color:var(--pool-d);background:#fff;border:1.5px solid var(--line);border-radius:8px;cursor:pointer;transition:all .25s var(--ease);font-family:'Mulish',sans-serif;flex-shrink:0}
+.termin-selected-edit:hover{border-color:var(--pool);background:var(--pool-l)}
+
+.termin-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+@media(max-width:560px){.termin-form-grid{grid-template-columns:1fr}}
+.termin-field{display:flex;flex-direction:column;gap:7px}
+.termin-field-full{grid-column:1/-1}
+.termin-field label{font-size:11.5px;font-family:'JetBrains Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--text-2);font-weight:600}
+.termin-field input,.termin-field select,.termin-field textarea{padding:13px 16px;border:1.5px solid var(--line);border-radius:9px;background:#FAFAF8;font-family:'Mulish',sans-serif;font-size:14px;color:var(--ink);transition:all .25s var(--ease);width:100%;font-weight:500}
+.termin-field input:focus,.termin-field select:focus,.termin-field textarea:focus{outline:none;border-color:var(--pool);background:#fff;box-shadow:0 0 0 3px rgba(109,180,193,.15)}
+.termin-field textarea{min-height:96px;resize:vertical;font-family:'Mulish',sans-serif}
+
+.termin-consent{display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:13px;line-height:1.55;color:var(--text);padding:14px 18px;background:#FAFAF8;border:1px solid var(--line);border-radius:10px;margin-bottom:24px}
+.termin-consent input{width:19px;height:19px;accent-color:var(--pool);cursor:pointer;flex-shrink:0;margin-top:1px}
+.termin-consent span{flex:1}
+
+.termin-action{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.termin-action .termin-btn:only-child{margin-left:auto}
+
+.termin-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;font-family:'Mulish',sans-serif;font-size:14px;font-weight:600;letter-spacing:.005em;border-radius:9px;cursor:pointer;transition:all .3s var(--ease);border:none;color:#fff}
+.termin-btn svg{width:16px;height:16px}
+.termin-btn-primary{background:linear-gradient(135deg,var(--pool),var(--pool-d));box-shadow:0 8px 24px -10px rgba(74,150,164,.45)}
+.termin-btn-primary:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(74,150,164,.6)}
+.termin-btn-primary:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
+.termin-btn-ghost{background:transparent;color:var(--text-2);border:1.5px solid var(--line)}
+.termin-btn-ghost:hover{border-color:var(--pool);color:var(--pool-d)}
+
+.termin-microcopy{font-size:12px;color:var(--text-2);text-align:center;margin-top:14px;line-height:1.5}
+
+/* === STAGE 3: Success === */
+.termin-success{text-align:center;padding:12px 0}
+.termin-success-icon{width:88px;height:88px;margin:0 auto 24px;background:var(--pool-l);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:kfgPopIn .6s var(--ease)}
+.termin-success-icon svg{width:54px;height:54px}
+.termin-success-h{font-size:32px;font-weight:200;letter-spacing:-.025em;color:var(--ink);margin-bottom:12px}
+.termin-success-lead{font-size:15px;line-height:1.6;color:var(--text);margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto}
+.termin-success-card{background:linear-gradient(135deg,var(--pool-l),#FAFAF8);border:1px solid rgba(109,180,193,.2);border-radius:12px;padding:24px;text-align:left;margin-bottom:24px}
+.termin-success-row{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid rgba(109,180,193,.15)}
+.termin-success-row:last-child{border-bottom:none}
+.termin-success-row-k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--text-2);font-weight:600}
+.termin-success-row-v{font-size:14px;font-weight:700;color:var(--ink);text-align:right;letter-spacing:-.005em}
+.termin-success-followup{font-size:13px;line-height:1.6;color:var(--text-2);margin-bottom:24px}
+.termin-success-followup a{color:var(--pool-d);font-weight:600;text-decoration:none;border-bottom:1.5px solid rgba(109,180,193,.3);transition:border-color .25s var(--ease)}
+.termin-success-followup a:hover{border-bottom-color:var(--pool)}
+
+/* Mobile-Optimierung */
+@media(max-width:880px){
+  .termin{padding:80px 0 100px}
+  .termin-head{margin-bottom:40px}
+  .termin-info-card{padding:24px}
+}
+
 /* KFG-CSS-MARKER — weitere Konfig-CSS hier rein */
+
+/* Smooth-Scroll mit Offset für die fixed Nav */
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:80px}
+.kfg, .direct, .faq, .refs, .partners, .process, .subst, .promise, .disc, .refhero{scroll-margin-top:80px}
 </style>
 </head>
 
-<body>
+<body id="top">
 
 <!-- ============ CUSTOM CURSOR ============ -->
 <div class="cursor" id="cursor"></div>
@@ -1455,7 +1628,7 @@ section{position:relative}
 <!-- ============ NAV ============ -->
 <nav class="nav dark-mode" id="nav">
   <div class="nav-inner">
-    <a href="#" class="brand">
+    <a href="#top" class="brand">
       <div class="brand-mark">
         <svg viewBox="0 0 24 24" fill="none">
           <path d="M4 17C8 14 11 17 12 17C13 17 16 14 20 17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
@@ -1479,11 +1652,12 @@ section{position:relative}
       <a href="#config" class="nav-link">Konfigurator</a>
       <a href="#refs" class="nav-link">Referenzen</a>
       <a href="#partners" class="nav-link">Partner</a>
+      <a href="#termin" class="nav-link">Termin</a>
       <a href="#faq" class="nav-link">FAQ</a>
     </div>
 
-    <a href="#lead" class="nav-cta">
-      <span>Erstgespräch</span>
+    <a href="#termin" class="nav-cta">
+      <span>Termin buchen</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
   </div>
@@ -1531,7 +1705,7 @@ section{position:relative}
         Seit zwölf Jahren bauen wir Außenanlagen mit Handwerk und Sorgfalt — vom geschwungenen Gartenweg bis zum <strong>maßgefertigten Pool</strong>. Drei Disziplinen, ein Anspruch: <strong>Festpreis, festes Datum, eine Baustelle.</strong>
       </p>
       <div class="hero-actions" id="heroActions">
-        <a href="#lead" class="btn-magnetic">
+        <a href="#config" class="btn-magnetic">
           <span>Projekt anfragen</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -1650,7 +1824,7 @@ section{position:relative}
       </div>
       <h3 class="disc-h">Gartengestaltung</h3>
       <p class="disc-p">Individuelle Planung von Außenanlagen, Bepflanzung, Wegen und Sichtachsen — maßgeschneidert auf Ihr Grundstück und Ihren Lebensstil.</p>
-      <a href="#" class="disc-link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#direct" class="disc-link">Beratung anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="disc-card" data-d="g2">
       <div class="disc-num">02 / Garten <span></span></div>
@@ -1659,7 +1833,7 @@ section{position:relative}
       </div>
       <h3 class="disc-h">Gartenpflege</h3>
       <p class="disc-p">Regelmäßige Pflege, Rasenarbeiten, Heckenschnitt und saisonale Betreuung — damit Ihr Garten dauerhaft schön bleibt. Wartungsverträge ab 2.400 €/Jahr.</p>
-      <a href="#" class="disc-link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#direct" class="disc-link">Beratung anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="disc-card" data-d="l">
       <div class="disc-num">03 / Landschaft <span></span></div>
@@ -1668,7 +1842,7 @@ section{position:relative}
       </div>
       <h3 class="disc-h">Landschaftsbau</h3>
       <p class="disc-p">Pflasterarbeiten, Mauerbau, Treppen und Trockenbauten — wir formen den festen Rahmen Ihres Gartens. 10 Jahre Gewährleistung auf Pflasterarbeiten.</p>
-      <a href="#" class="disc-link">Mehr erfahren <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#direct" class="disc-link">Beratung anfragen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="disc-card" data-d="p">
       <div class="disc-num">04 / Pool <span class="disc-new">NEU 2026</span></div>
@@ -1813,16 +1987,16 @@ section{position:relative}
 
         <!-- Stage 4: Ausstattung -->
         <div class="kfg-stage" data-stage="4">
-          <div class="kfg-cat-sub">Abdeckung</div>
+          <div class="kfg-cat-sub" id="kfgRollLbl">Rollladen / Abdeckung</div>
           <div class="kfg-opt-grid" id="kfgRollGrid"></div>
 
-          <div class="kfg-cat-sub">Gegenstromanlage</div>
+          <div class="kfg-cat-sub" id="kfgGsaLbl">Gegenstromanlage</div>
           <div class="kfg-opt-grid" id="kfgGsaGrid"></div>
 
-          <div class="kfg-cat-sub" id="kfgLichtLbl">Lichtpaket</div>
+          <div class="kfg-cat-sub" id="kfgLichtLbl">Ausstattungspaket</div>
           <div class="kfg-opt-grid" id="kfgLichtGrid"></div>
 
-          <div class="kfg-cat-sub">Zubehör <span class="kfg-cat-hint">— Mehrfachauswahl möglich</span></div>
+          <div class="kfg-cat-sub" id="kfgWellnessLbl">Zubehör <span class="kfg-cat-hint">— Mehrfachauswahl möglich</span></div>
           <div class="kfg-opt-grid" id="kfgWellnessGrid"></div>
         </div>
 
@@ -2304,7 +2478,7 @@ section{position:relative}
         <div class="direct-cta">Jetzt anrufen <span>→</span></div>
       </a>
 
-      <a class="direct-card direct-card-prio" href="https://wa.me/4916224016920?text=Hallo%20Domenik%2C%20ich%20interessiere%20mich%20f%C3%BCr%20einen%20Pool">
+      <a class="direct-card direct-card-prio" href="https://wa.me/4915259982000?text=Hallo%20Domenik%2C%20ich%20interessiere%20mich%20f%C3%BCr%20einen%20Pool">
         <div class="direct-tag">★ Schnellste Antwort</div>
         <div class="direct-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21M9 10a.5.5 0 1 0 1 0V9a.5.5 0 1 0-1 0v1zm5 0a.5.5 0 1 0 1 0V9a.5.5 0 1 0-1 0v1zm-5 4c.5 1.5 2 2 3 2s2.5-.5 3-2"/></svg>
@@ -2330,7 +2504,193 @@ section{position:relative}
       <div class="direct-addr-card">
         <div class="direct-addr-lbl">Werkstatt & Büro</div>
         <div class="direct-addr-val">Jelić Galabau · Böhmstraße 6 · 70597 Stuttgart</div>
-        <div class="direct-addr-meta">Vor-Ort-Termine ausschließlich nach Vereinbarung — über den Konfigurator oder telefonisch.</div>
+        <div class="direct-addr-meta">Vor-Ort-Termine ausschließlich nach Vereinbarung — Termin direkt unten buchen oder telefonisch.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TERMIN-BUCHUNG (STANDALONE) ============ -->
+<section class="termin" id="termin">
+  <div class="termin-inner">
+
+    <div class="termin-head reveal">
+      <div class="eb termin-eb">Termin sofort buchen · Kostenlos · 30 Minuten</div>
+      <h2 class="h2 termin-h">Vor-Ort-Termin <span class="em">direkt buchen.</span></h2>
+      <p class="sub termin-sub">Sie wissen schon, dass wir der richtige Partner sind? Dann sparen wir uns den Umweg über den Konfigurator. Wählen Sie direkt einen passenden Termin — Domenik kommt vorbei, bespricht Ihr Projekt vor Ort, und Sie haben in 30 Minuten Klarheit. Kostenlos. Unverbindlich.</p>
+    </div>
+
+    <div class="termin-wrap reveal">
+
+      <!-- LINKE SEITE: USP + Was passiert beim Termin -->
+      <div class="termin-info">
+        <div class="termin-info-card">
+          <div class="termin-info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="termin-info-h">Was Sie in 30 Minuten erfahren</h3>
+          <ul class="termin-info-list">
+            <li>Welche Pool-Linie zu Ihrem Grundstück passt — RivieraPool oder NORDIQ</li>
+            <li>Realistische Investition für Ihre konkrete Bauort-Situation</li>
+            <li>Tiefbau-Voraussetzungen, Wasser- und Stromanschluss-Checks</li>
+            <li>Wie wir Pool und Garten als ein Gesamtbild planen</li>
+            <li>Wann der Bau startet, wann Sie schwimmen — schriftliches Lieferdatum</li>
+          </ul>
+        </div>
+
+        <div class="termin-info-card">
+          <div class="termin-info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M9 12l2 2 4-4" stroke-linecap="round"/>
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+          </div>
+          <h3 class="termin-info-h">Was Sie nicht erleben werden</h3>
+          <ul class="termin-info-list termin-info-neg">
+            <li>Verkaufsdruck — Domenik berät, er verkauft nicht</li>
+            <li>"Ab"-Preise oder Lockangebote — wir nennen konkrete Hausnummern</li>
+            <li>Standard-Konfigurationen aus dem Prospekt — jeder Pool ist anders</li>
+            <li>Folgekosten-Überraschungen — alles wird vorher schriftlich geklärt</li>
+          </ul>
+        </div>
+
+        <div class="termin-trust">
+          <div class="termin-trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z" stroke-linejoin="round"/>
+              <path d="M9 12l2 2 4-4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="termin-trust-text">
+            <strong>Kostenlos & unverbindlich.</strong> Falls Sie nach dem Termin entscheiden, dass wir nicht der richtige Partner sind — kein Problem. Wir investieren die 30 Minuten in unsere Beziehung zu Ihnen, nicht in ein Angebot.
+          </div>
+        </div>
+      </div>
+
+      <!-- RECHTE SEITE: Kalender + Slot + Form -->
+      <div class="termin-booking">
+
+        <!-- Step Indicator -->
+        <div class="termin-steps">
+          <div class="termin-step active" id="tsStep1"><span class="termin-step-num">1</span><span class="termin-step-lbl">Termin wählen</span></div>
+          <div class="termin-step-line"></div>
+          <div class="termin-step" id="tsStep2"><span class="termin-step-num">2</span><span class="termin-step-lbl">Kontakt</span></div>
+          <div class="termin-step-line"></div>
+          <div class="termin-step" id="tsStep3"><span class="termin-step-num">3</span><span class="termin-step-lbl">Bestätigt</span></div>
+        </div>
+
+        <!-- STAGE 1: Kalender -->
+        <div class="termin-stage termin-stage-active" id="tsStage1">
+          <div class="termin-cal-wrap">
+            <div class="termin-cal" id="terminCal"></div>
+          </div>
+
+          <div class="termin-slot-info" id="terminSlotInfo">
+            <div class="termin-slot-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="termin-slot-info-text">
+              <strong>Wählen Sie einen Tag</strong> — anschließend zeigen wir Ihnen verfügbare 30-Minuten-Slots
+            </div>
+          </div>
+
+          <div class="termin-action">
+            <button class="termin-btn termin-btn-primary" id="terminToContact" disabled>
+              <span>Weiter zu Ihren Kontaktdaten</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- STAGE 2: Kontaktdaten -->
+        <div class="termin-stage" id="tsStage2">
+          <div class="termin-selected-slot" id="terminSelectedSlot">
+            <div class="termin-selected-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            </div>
+            <div class="termin-selected-content">
+              <div class="termin-selected-lbl">Ihr gewählter Termin</div>
+              <div class="termin-selected-val" id="terminSelectedVal">—</div>
+            </div>
+            <button class="termin-selected-edit" id="terminEditSlot" type="button">Ändern</button>
+          </div>
+
+          <div class="termin-form-grid">
+            <div class="termin-field"><label>Vorname *</label><input type="text" id="tFVorname" placeholder="Max"></div>
+            <div class="termin-field"><label>Nachname *</label><input type="text" id="tFNachname" placeholder="Mustermann"></div>
+            <div class="termin-field"><label>E-Mail *</label><input type="email" id="tFMail" placeholder="max@beispiel.de"></div>
+            <div class="termin-field"><label>Telefon *</label><input type="tel" id="tFTel" placeholder="0170 1234567"></div>
+            <div class="termin-field"><label>PLZ Bauort *</label><input type="text" id="tFPlz" placeholder="70597" maxlength="5"></div>
+            <div class="termin-field"><label>Eigentümer?</label>
+              <select id="tFEigentum">
+                <option value="ja">Ja, Eigentümer</option>
+                <option value="bald">Kauf in Planung</option>
+                <option value="nein">Nein, Mieter</option>
+              </select>
+            </div>
+            <div class="termin-field termin-field-full"><label>Worum geht's? (optional)</label><textarea id="tFMsg" placeholder="Kurz beschreiben, was Sie sich vorstellen — Grundstücksgröße, Hanglage, Wünsche, Budget-Rahmen …"></textarea></div>
+          </div>
+
+          <label class="termin-consent">
+            <input type="checkbox" id="tFConsent">
+            <span>Ich bin einverstanden, dass Jelić Galabau meine Angaben zur Bearbeitung dieser Anfrage speichert und mich kontaktiert. Die Daten werden vertraulich behandelt und nicht weitergegeben.</span>
+          </label>
+
+          <div class="termin-action">
+            <button class="termin-btn termin-btn-ghost" id="terminBack" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              <span>Zurück</span>
+            </button>
+            <button class="termin-btn termin-btn-primary" id="terminSubmit" type="button">
+              <span>Termin verbindlich buchen</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+          <div class="termin-microcopy">Verbindlich = wir blockieren den Termin für Sie. Falls etwas dazwischen kommt, sagen Sie einfach Bescheid — kein Problem.</div>
+        </div>
+
+        <!-- STAGE 3: Bestätigung -->
+        <div class="termin-stage" id="tsStage3">
+          <div class="termin-success">
+            <div class="termin-success-icon">
+              <svg viewBox="0 0 64 64" fill="none" stroke="#6DB4C1" stroke-width="3.2">
+                <circle cx="32" cy="32" r="28"/>
+                <path d="M20 32l8 8 16-16" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="termin-success-h">Termin gebucht.</h3>
+            <p class="termin-success-lead" id="terminSuccessLead">Domenik kommt persönlich zu Ihnen.</p>
+
+            <div class="termin-success-card">
+              <div class="termin-success-row">
+                <div class="termin-success-row-k">TERMIN</div>
+                <div class="termin-success-row-v" id="terminSuccessSlot">—</div>
+              </div>
+              <div class="termin-success-row">
+                <div class="termin-success-row-k">DAUER</div>
+                <div class="termin-success-row-v">30 Minuten</div>
+              </div>
+              <div class="termin-success-row">
+                <div class="termin-success-row-k">ORT</div>
+                <div class="termin-success-row-v">Bei Ihnen vor Ort</div>
+              </div>
+              <div class="termin-success-row">
+                <div class="termin-success-row-k">BERATER</div>
+                <div class="termin-success-row-v">Domenik Jelić</div>
+              </div>
+            </div>
+
+            <p class="termin-success-followup">
+              Sie erhalten in den nächsten Minuten eine Bestätigungs-Mail mit allen Details. Bei Rückfragen erreichen Sie Domenik direkt unter <a href="tel:+4915259982000">0152 · 59 98 20 00</a> oder via <a href="https://wa.me/4915259982000">WhatsApp</a>.
+            </p>
+
+            <button class="termin-btn termin-btn-ghost" id="terminReset" type="button">Neuen Termin buchen</button>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -2362,20 +2722,20 @@ section{position:relative}
       <div>
         <h4 class="foot-h">Leistungen</h4>
         <ul>
-          <li><a href="#">Gartengestaltung</a></li>
-          <li><a href="#">Gartenpflege</a></li>
-          <li><a href="#">Landschaftsbau</a></li>
-          <li><a href="#">Poolbau · Neu 2026</a></li>
-          <li><a href="#">Wartung & Service</a></li>
+          <li><a href="#disciplines">Gartengestaltung</a></li>
+          <li><a href="#disciplines">Gartenpflege</a></li>
+          <li><a href="#disciplines">Landschaftsbau</a></li>
+          <li><a href="#config">Poolbau · Neu 2026</a></li>
+          <li><a href="#disciplines">Wartung & Service</a></li>
         </ul>
       </div>
       <div>
         <h4 class="foot-h">Unternehmen</h4>
         <ul>
-          <li><a href="#">Team</a></li>
-          <li><a href="#">Referenzen</a></li>
-          <li><a href="#">Partner</a></li>
-          <li><a href="#">Karriere</a></li>
+          <li><a href="#disciplines">Leistungen</a></li>
+          <li><a href="#refs">Referenzen</a></li>
+          <li><a href="#partners">Partner</a></li>
+          <li><a href="#direct">Kontakt</a></li>
         </ul>
       </div>
       <div>
@@ -2383,8 +2743,9 @@ section{position:relative}
         <ul>
           <li>Böhmstraße 6</li>
           <li>70597 Stuttgart</li>
-          <li style="margin-top:14px"><a href="#">+49 (0)711 · 123 456 78</a></li>
-          <li><a href="#">hallo@jelicgalabau.de</a></li>
+          <li style="margin-top:14px"><a href="tel:+4971176675600">0711 · 76 67 56</a></li>
+          <li><a href="tel:+4915259982000">0152 · 59 98 20 00</a></li>
+          <li><a href="mailto:d.jelic@jelicgalabau.de">d.jelic@jelicgalabau.de</a></li>
         </ul>
       </div>
     </div>
@@ -2505,9 +2866,9 @@ document.querySelectorAll('.subbrand-btn').forEach(btn=>{
     document.querySelectorAll('.subbrand-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     if(btn.dataset.brand==='pools'){
-      document.getElementById('config').scrollIntoView({behavior:'smooth'});
+      document.getElementById('config').scrollIntoView({behavior:'smooth', block:'start'});
     }else{
-      document.getElementById('disciplines').scrollIntoView({behavior:'smooth'});
+      document.getElementById('disciplines').scrollIntoView({behavior:'smooth', block:'start'});
     }
   });
 });
@@ -3081,18 +3442,34 @@ const kfg = (function(){
   /* ===== Render: Stage 4 — Ausstattung ===== */
   function renderAusstattungStage(){
     const brand = KFG_DATA[state.brand];
+    const rollLbl = document.getElementById('kfgRollLbl');
+    const gsaLbl = document.getElementById('kfgGsaLbl');
+    const lichtLbl = document.getElementById('kfgLichtLbl');
+    const wellnessLbl = document.getElementById('kfgWellnessLbl');
+    const wellnessGrid = document.getElementById('kfgWellnessGrid');
+
     if(state.brand === 'riviera'){
-      // Riviera: Paket statt GSA/Extras separat
+      // Riviera Layout:
+      // [Rollladenschacht] [Polycarbonat-Abdeckung] [Ausstattungspaket]
+      rollLbl.innerHTML = 'Rollladenschacht';
+      gsaLbl.innerHTML = 'Polycarbonat-Abdeckung';
+      lichtLbl.innerHTML = 'Ausstattungspaket <span class="kfg-cat-hint">— Komfort-Stufe</span>';
+      wellnessLbl.style.display = 'block';
+      wellnessLbl.innerHTML = 'Hinweis';
       renderOptGrid('kfgRollGrid', brand.rollladen, 'rollladen', false);
       renderOptGrid('kfgGsaGrid', brand.abdeckung, 'abdeckung', false);
-      document.getElementById('kfgLichtLbl').textContent = 'Ausstattungspaket';
       renderOptGrid('kfgLichtGrid', brand.paket, 'paket', false);
-      document.getElementById('kfgWellnessGrid').innerHTML = '<div class="kfg-info-bar" style="grid-column:1/-1">Gegenstromanlage und Wellness-Komponenten sind im STYLE SIGNATURE-Paket enthalten. Individuelle Wünsche besprechen wir im Vor-Ort-Termin.</div>';
+      wellnessGrid.innerHTML = '<div class="kfg-info-bar" style="grid-column:1/-1;margin:0">Gegenstromanlage und Wellness-Komponenten sind im STYLE SIGNATURE-Paket bereits enthalten (Riviera Jet Turbinenanlage 240 m³/h, App-fähig). Individuelle Wünsche besprechen wir gerne im Vor-Ort-Termin.</div>';
     } else {
-      // NORDIQ: klassische Optionen
+      // NORDIQ Layout:
+      // [Abdeckung Shield] [Gegenstromanlage] [Steuerung App] [Zubehör Multi]
+      rollLbl.innerHTML = 'Abdeckung';
+      gsaLbl.innerHTML = 'Gegenstromanlage';
+      lichtLbl.innerHTML = 'Steuerung & Komfort';
+      wellnessLbl.style.display = 'block';
+      wellnessLbl.innerHTML = 'Zubehör <span class="kfg-cat-hint">— Mehrfachauswahl möglich</span>';
       renderOptGrid('kfgRollGrid', brand.rollladen, 'rollladen', false);
       renderOptGrid('kfgGsaGrid', brand.gsa, 'gsa', false);
-      document.getElementById('kfgLichtLbl').textContent = 'Steuerung & Komfort';
       renderOptGrid('kfgLichtGrid', brand.extras.filter(e => e.id === 'app'), 'extras', true);
       renderOptGrid('kfgWellnessGrid', brand.extras.filter(e => e.id !== 'app'), 'extras', true);
     }
@@ -3224,17 +3601,32 @@ const kfg = (function(){
     }
     if(state.brand && !state.filter){
       if(state.brand === 'nordiq') state.filter = 'tt-white';
+      if(state.brand === 'riviera') state.filter = 'connect';      // Connect ist Standard in Style-Serie
     }
     if(state.brand === 'nordiq' && !state.rollladen) state.rollladen = 'shield';
     if(state.brand === 'riviera' && !state.rollladen) state.rollladen = 'schacht';
     if(state.brand === 'riviera' && !state.abdeckung) state.abdeckung = 'thermosafe';
+    if(state.brand === 'riviera' && !state.paket) state.paket = 'ambiente';
+  }
+
+  function scrollToStage(){
+    // Scroll zum Stage-Head — der bleibt zwischen Stages stabil und ist der natürliche Lese-Einstieg
+    const head = document.querySelector('.kfg-stage-head');
+    if(!head) return;
+    const rect = head.getBoundingClientRect();
+    // Stage-Head bei 80px unter dem oberen Viewport-Rand positionieren (unter der fixed-Nav)
+    const targetY = window.scrollY + rect.top - 80;
+    // Immer scrollen wenn der Head nicht bei ~80px ist (Toleranz 30px)
+    if(Math.abs(rect.top - 80) > 30){
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
+    }
   }
 
   function goto(n){
     step = n;
     showStage(step);
     update();
-    document.getElementById('config').scrollIntoView({ behavior:'smooth', block:'start' });
+    scrollToStage();
   }
 
   function next(){
@@ -3249,13 +3641,14 @@ const kfg = (function(){
     step++;
     showStage(step);
     update();
+    scrollToStage();
     // Tracking: Step-Advance
     if(typeof gtag !== 'undefined') gtag('event', 'kfg_step', { step: step, step_name: KFG_STEP_LBLS[step] });
     if(typeof fbq !== 'undefined') fbq('trackCustom', 'KFG_Step', { step: step });
   }
 
   function back(){
-    if(step > 0){ step--; showStage(step); update(); }
+    if(step > 0){ step--; showStage(step); update(); scrollToStage(); }
   }
 
   /* ===== Hersteller wählen ===== */
@@ -3607,7 +4000,7 @@ Domenik Jelić
 Jelić Galabau · Stuttgart
 
 ──────────────────────────────────────────────
-Direkt:      0162 240 16 92 (Mobil · WhatsApp)
+Direkt:      0152 59 98 20 00 (Mobil · WhatsApp)
 Büro:        0711 76 67 56
 Mail:        d.jelic@jelicgalabau.de
 Adresse:     Böhmstraße 6 · 70597 Stuttgart
@@ -3726,7 +4119,436 @@ Investitionsrahmen: ${t.lo.toLocaleString('de-DE')} – ${t.hi.toLocaleString('d
   }
 }
 
-/* ============ INIT (nach DOM-Load) ============ */
+/* ============================================================
+   TERMIN-BUCHUNG (STANDALONE) — eigenständiger Booking-Flow
+   ============================================================ */
+const termin = (function(){
+  let state = {
+    month: null,
+    year: null,
+    selectedDate: null,    // {year, month, day}
+    selectedSlot: null,    // 'HH:MM'
+    stage: 1
+  };
+
+  // Verfügbare Slots pro Wochentag (30-Min-Intervalle)
+  // Mo-Fr: 09:00-18:00, Sa: 10:00-14:00, So geschlossen
+  function getSlotsForDate(date){
+    const wd = date.getDay();
+    if(wd === 0) return [];
+    if(wd === 6) return ['10:00','10:30','11:00','11:30','12:00','12:30','13:00','13:30'];
+    return ['09:00','09:30','10:00','10:30','11:00','11:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30'];
+  }
+
+  // Simuliere: einige Slots sind bereits gebucht (deterministisch per Datum-Hash)
+  function isSlotAvailable(date, slot){
+    const seed = date.getFullYear() * 10000 + (date.getMonth()+1) * 100 + date.getDate();
+    const slotHash = slot.split(':').reduce((a,b)=>a*60+parseInt(b),0);
+    // Pseudo-Random: ~25% der Slots "gebucht"
+    return ((seed * 7 + slotHash * 13) % 100) >= 25;
+  }
+
+  function fmtMonth(m, y){
+    const names = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+    return `${names[m]} ${y}`;
+  }
+
+  function fmtDateLong(date){
+    const wds = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+    const ms = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+    return `${wds[date.getDay()]}, ${date.getDate()}. ${ms[date.getMonth()]} ${date.getFullYear()}`;
+  }
+
+  function renderCal(){
+    if(state.month === null){
+      const today = new Date();
+      state.month = today.getMonth();
+      state.year = today.getFullYear();
+    }
+
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    const maxDate = new Date(today); maxDate.setDate(today.getDate() + 90);
+
+    const m = state.month;
+    const y = state.year;
+    const firstDay = new Date(y, m, 1);
+    const lastDay = new Date(y, m+1, 0);
+    let startWd = firstDay.getDay() - 1;
+    if(startWd === -1) startWd = 6;
+
+    const prevDisabled = (y < today.getFullYear()) || (y === today.getFullYear() && m <= today.getMonth());
+    const nextLimit = new Date(today); nextLimit.setMonth(today.getMonth() + 3);
+    const nextDisabled = (y > nextLimit.getFullYear()) || (y === nextLimit.getFullYear() && m >= nextLimit.getMonth());
+
+    let html = `
+      <div class="termin-cal-month-row">
+        <div class="termin-cal-month-name">${fmtMonth(m, y)}</div>
+        <div class="termin-cal-nav-group">
+          <button class="termin-cal-nav-btn" id="terminCalPrev" ${prevDisabled?'disabled':''} type="button" aria-label="Vorheriger Monat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="termin-cal-nav-btn" id="terminCalNext" ${nextDisabled?'disabled':''} type="button" aria-label="Nächster Monat">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="termin-cal-wd-row">
+        ${['Mo','Di','Mi','Do','Fr','Sa','So'].map(w=>`<div class="termin-cal-wd">${w}</div>`).join('')}
+      </div>
+      <div class="termin-cal-days">
+    `;
+
+    for(let i=0; i<startWd; i++) html += '<div class="termin-cal-day-cell empty"></div>';
+
+    for(let d=1; d<=lastDay.getDate(); d++){
+      const date = new Date(y, m, d);
+      date.setHours(0,0,0,0);
+      const wd = date.getDay();
+      const isToday = date.toDateString() === today.toDateString();
+      const isPast = date < today;
+      const isFuture = date > maxDate;
+      const isSunday = wd === 0;
+      const slots = getSlotsForDate(date);
+      const availableSlots = slots.filter(s => isSlotAvailable(date, s));
+      const disabled = isPast || isFuture || isSunday || availableSlots.length === 0;
+      const isSel = state.selectedDate &&
+                    state.selectedDate.day === d &&
+                    state.selectedDate.month === m &&
+                    state.selectedDate.year === y;
+      const cls = [
+        isToday ? 'today' : '',
+        (wd === 0 || wd === 6) ? 'weekend' : '',
+        isSel ? 'selected' : ''
+      ].filter(Boolean).join(' ');
+      html += `<div class="termin-cal-day-cell">
+        <button class="termin-cal-day-btn ${cls}" data-day="${d}" ${disabled?'disabled':''} type="button">
+          ${d}
+          ${(!disabled && availableSlots.length > 0) ? '<span class="termin-cal-day-avail"></span>' : ''}
+        </button>
+      </div>`;
+    }
+
+    html += '</div>';
+
+    // Slot-Auswahl wenn Tag gewählt
+    if(state.selectedDate){
+      const selDate = new Date(state.selectedDate.year, state.selectedDate.month, state.selectedDate.day);
+      const slots = getSlotsForDate(selDate);
+      html += `
+        <div class="termin-slots">
+          <div class="termin-slots-head">
+            <div class="termin-slots-lbl">Verfügbare 30-Min-Slots</div>
+            <div class="termin-slots-date">${fmtDateLong(selDate)}</div>
+          </div>
+          <div class="termin-slots-grid">
+            ${slots.map(s => {
+              const avail = isSlotAvailable(selDate, s);
+              const isSelSlot = state.selectedSlot === s;
+              return `<button class="termin-slot-btn ${isSelSlot?'selected':''}" data-slot="${s}" ${!avail?'disabled':''} type="button">${s}</button>`;
+            }).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById('terminCal').innerHTML = html;
+
+    // Event Listeners
+    const prevBtn = document.getElementById('terminCalPrev');
+    if(prevBtn) prevBtn.addEventListener('click', () => {
+      if(prevDisabled) return;
+      state.month--;
+      if(state.month < 0){ state.month = 11; state.year--; }
+      renderCal();
+    });
+    const nextBtn = document.getElementById('terminCalNext');
+    if(nextBtn) nextBtn.addEventListener('click', () => {
+      if(nextDisabled) return;
+      state.month++;
+      if(state.month > 11){ state.month = 0; state.year++; }
+      renderCal();
+    });
+
+    document.querySelectorAll('#terminCal .termin-cal-day-btn:not(:disabled)').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.selectedDate = {
+          year: state.year,
+          month: state.month,
+          day: parseInt(btn.dataset.day)
+        };
+        state.selectedSlot = null;
+        renderCal();
+        updateInfoHint();
+        updateCTA();
+      });
+    });
+
+    document.querySelectorAll('#terminCal .termin-slot-btn:not(:disabled)').forEach(btn => {
+      btn.addEventListener('click', () => {
+        state.selectedSlot = btn.dataset.slot;
+        renderCal();
+        updateInfoHint();
+        updateCTA();
+      });
+    });
+  }
+
+  function updateInfoHint(){
+    const info = document.getElementById('terminSlotInfo');
+    if(state.selectedDate && state.selectedSlot){
+      info.classList.add('hidden');
+    } else if(state.selectedDate){
+      info.querySelector('.termin-slot-info-text').innerHTML =
+        '<strong>Wählen Sie eine Uhrzeit</strong> — alle Slots sind 30 Minuten lang';
+      info.classList.remove('hidden');
+    } else {
+      info.querySelector('.termin-slot-info-text').innerHTML =
+        '<strong>Wählen Sie einen Tag</strong> — anschließend zeigen wir Ihnen verfügbare 30-Minuten-Slots';
+      info.classList.remove('hidden');
+    }
+  }
+
+  function updateCTA(){
+    const btn = document.getElementById('terminToContact');
+    btn.disabled = !(state.selectedDate && state.selectedSlot);
+  }
+
+  function goToStage(n){
+    state.stage = n;
+    document.querySelectorAll('.termin-stage').forEach(s => s.classList.remove('termin-stage-active'));
+    document.getElementById('tsStage' + n).classList.add('termin-stage-active');
+
+    // Step-Indicator
+    [1,2,3].forEach(i => {
+      const step = document.getElementById('tsStep' + i);
+      step.classList.remove('active', 'done');
+      if(i < n) step.classList.add('done');
+      else if(i === n) step.classList.add('active');
+    });
+
+    // Scroll
+    const head = document.querySelector('.termin-head');
+    if(head){
+      const rect = head.getBoundingClientRect();
+      if(Math.abs(rect.top - 80) > 100){
+        window.scrollTo({ top: window.scrollY + rect.top - 80, behavior: 'smooth' });
+      }
+    }
+  }
+
+  function fmtSlotForUser(){
+    if(!state.selectedDate || !state.selectedSlot) return '—';
+    const d = new Date(state.selectedDate.year, state.selectedDate.month, state.selectedDate.day);
+    return `${fmtDateLong(d)} · ${state.selectedSlot} Uhr`;
+  }
+
+  function showSelectedSlot(){
+    document.getElementById('terminSelectedVal').textContent = fmtSlotForUser();
+  }
+
+  async function submit(){
+    const v = id => document.getElementById(id).value.trim();
+    const vorname = v('tFVorname');
+    const nachname = v('tFNachname');
+    const mail = v('tFMail');
+    const tel = v('tFTel');
+    const plz = v('tFPlz');
+    const eigentum = document.getElementById('tFEigentum').value;
+    const msg = v('tFMsg');
+    const consent = document.getElementById('tFConsent').checked;
+
+    const errors = [];
+    if(!vorname) errors.push('Vorname');
+    if(!nachname) errors.push('Nachname');
+    if(!/.+@.+\..+/.test(mail)) errors.push('gültige E-Mail');
+    if(tel.length < 6) errors.push('Telefon');
+    if(plz.length < 4) errors.push('PLZ');
+    if(!consent) errors.push('Einverständnis');
+    if(errors.length){
+      toast('Bitte ergänzen: ' + errors.join(', '), true);
+      return;
+    }
+
+    // Iso-Datum + Zeitslot
+    const d = new Date(state.selectedDate.year, state.selectedDate.month, state.selectedDate.day);
+    const iso = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}T${state.selectedSlot}:00`;
+    const slotEnd = state.selectedSlot.split(':');
+    const endMin = (parseInt(slotEnd[0])*60 + parseInt(slotEnd[1]) + 30);
+    const endStr = `${String(Math.floor(endMin/60)).padStart(2,'0')}:${String(endMin%60).padStart(2,'0')}`;
+
+    const subject = `Vor-Ort-Termin · ${fmtSlotForUser()} · ${vorname} ${nachname}`;
+
+    const summary = `
+═══════════════════════════════════════════════
+  VOR-ORT-TERMIN BUCHUNG · 30 Minuten
+═══════════════════════════════════════════════
+
+TERMIN:    ${fmtSlotForUser()} – ${endStr} Uhr
+DAUER:     30 Minuten
+ORT:       Beim Kunden vor Ort
+KANAL:     Standalone-Termin-Buchung (ohne Konfigurator)
+
+──────────────────────────────────────────────
+KUNDE
+──────────────────────────────────────────────
+Name:      ${vorname} ${nachname}
+E-Mail:    ${mail}
+Telefon:   ${tel}
+PLZ:       ${plz}
+Status:    ${eigentum === 'ja' ? 'Eigentümer' : (eigentum === 'bald' ? 'Kauf in Planung' : 'Mieter')}
+
+──────────────────────────────────────────────
+ANLIEGEN
+──────────────────────────────────────────────
+${msg || '— Keine Vorab-Beschreibung —'}
+
+═══════════════════════════════════════════════
+Buchung über jelicgalabau.de · ${new Date().toLocaleString('de-DE')}
+═══════════════════════════════════════════════
+`.trim();
+
+    const autoReply = `
+Sehr geehrte/r ${vorname} ${nachname},
+
+vielen Dank für Ihre Terminbuchung. Ich freue mich auf unser Gespräch.
+
+Ihr Termin ist verbindlich reserviert:
+
+${fmtSlotForUser()}
+Dauer: 30 Minuten · Bei Ihnen vor Ort
+
+Was Sie zum Termin vorbereiten können (optional):
+- Lageplan oder Foto vom geplanten Bauort
+- Falls vorhanden: bestehende Baugenehmigungen oder Grundstücksplan
+- Ihre wichtigsten Fragen oder Wünsche
+
+Falls etwas dazwischen kommt, sagen Sie einfach Bescheid — am einfachsten direkt per WhatsApp oder Anruf:
+
+Mit besten Grüßen,
+
+Domenik Jelić
+Jelić Galabau · Stuttgart
+
+──────────────────────────────────────────────
+Direkt:      0152 59 98 20 00 (Mobil · WhatsApp)
+Büro:        0711 76 67 56
+Mail:        d.jelic@jelicgalabau.de
+Adresse:     Böhmstraße 6 · 70597 Stuttgart
+──────────────────────────────────────────────
+`.trim();
+
+    const formData = {
+      _subject: subject,
+      _replyto: mail,
+      vorname, nachname, mail, telefon: tel, plz, eigentum,
+      termin: fmtSlotForUser(),
+      termin_iso: iso,
+      termin_dauer: '30 Minuten',
+      kanal: 'Standalone-Termin-Buchung',
+      summary,
+      auto_reply: autoReply,
+      anliegen: msg
+    };
+
+    // Submit-Button Loading
+    const btn = document.getElementById('terminSubmit');
+    const oldHTML = btn.innerHTML;
+    btn.innerHTML = '<span class="kfg-price-spinner" style="border-color:rgba(255,255,255,.3);border-top-color:#fff"></span> Wird gebucht …';
+    btn.disabled = true;
+
+    try {
+      let success = false;
+      if(KFG_CONFIG.formEndpoint && !KFG_CONFIG.formEndpoint.includes('REPLACE')){
+        const res = await fetch(KFG_CONFIG.formEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+        success = res.ok;
+        if(!success){
+          const mailtoBody = encodeURIComponent(summary);
+          const mailtoSubject = encodeURIComponent(subject);
+          setTimeout(() => window.open(`mailto:${KFG_CONFIG.fallbackMailTo}?subject=${mailtoSubject}&body=${mailtoBody}`), 400);
+        }
+      } else {
+        // Demo-Mode
+        const mailtoBody = encodeURIComponent(summary);
+        const mailtoSubject = encodeURIComponent(subject);
+        setTimeout(() => window.open(`mailto:${KFG_CONFIG.fallbackMailTo}?subject=${mailtoSubject}&body=${mailtoBody}`), 400);
+        success = true;
+      }
+
+      btn.innerHTML = oldHTML;
+      btn.disabled = false;
+
+      // Success-Stage zeigen
+      document.getElementById('terminSuccessSlot').textContent = fmtSlotForUser();
+      document.getElementById('terminSuccessLead').textContent =
+        `Ihr Termin am ${fmtSlotForUser()} ist verbindlich reserviert. Domenik kommt persönlich zu Ihnen.`;
+      goToStage(3);
+
+      // Tracking
+      if(typeof gtag !== 'undefined'){
+        gtag('event', 'conversion', {
+          send_to: KFG_CONFIG.gtagConversionId,
+          value: 0,
+          currency: 'EUR',
+          transaction_id: 'termin_' + Date.now()
+        });
+        gtag('event', 'book_appointment', { method: 'standalone_calendar' });
+      }
+      if(typeof fbq !== 'undefined'){
+        fbq('track', 'Schedule');
+        fbq('trackCustom', 'TerminBooked', { source: 'standalone' });
+      }
+
+    } catch(err){
+      console.error('Termin-Submit-Fehler:', err);
+      btn.innerHTML = oldHTML;
+      btn.disabled = false;
+      const mailtoBody = encodeURIComponent(summary);
+      const mailtoSubject = encodeURIComponent(subject);
+      window.location.href = `mailto:${KFG_CONFIG.fallbackMailTo}?subject=${mailtoSubject}&body=${mailtoBody}`;
+      toast('Versand vorübergehend nicht möglich — wir öffnen Ihr Mailprogramm.', true);
+    }
+  }
+
+  function reset(){
+    state = { month: null, year: null, selectedDate: null, selectedSlot: null, stage: 1 };
+    // Form leeren
+    ['tFVorname','tFNachname','tFMail','tFTel','tFPlz','tFMsg'].forEach(id => {
+      const el = document.getElementById(id); if(el) el.value = '';
+    });
+    const cons = document.getElementById('tFConsent'); if(cons) cons.checked = false;
+    document.getElementById('tFEigentum').value = 'ja';
+    renderCal();
+    updateInfoHint();
+    updateCTA();
+    goToStage(1);
+  }
+
+  function init(){
+    renderCal();
+    updateInfoHint();
+    updateCTA();
+
+    document.getElementById('terminToContact').addEventListener('click', () => {
+      if(!state.selectedDate || !state.selectedSlot) return;
+      showSelectedSlot();
+      goToStage(2);
+    });
+
+    document.getElementById('terminBack').addEventListener('click', () => goToStage(1));
+    document.getElementById('terminEditSlot').addEventListener('click', () => goToStage(1));
+    document.getElementById('terminSubmit').addEventListener('click', () => submit());
+    document.getElementById('terminReset').addEventListener('click', () => reset());
+  }
+
+  return { init, reset };
+})();
+
+
 document.addEventListener('DOMContentLoaded', () => {
   // Initial-Render des Konfigurators
   kfg.update();
@@ -3750,6 +4572,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.faq-item').forEach(item => {
     item.addEventListener('click', () => item.classList.toggle('open'));
   });
+
+  // Termin-Buchung initialisieren
+  termin.init();
 
   // Stepper-Container vorbereiten (Click-Handler auf einzelne Steps werden in renderStepper gesetzt)
 });
